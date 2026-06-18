@@ -1,0 +1,91 @@
+//////////////////////////////////////
+// Topic about: Теория (Theory)
+//////////////////////////////////////
+
+@topic_theory_found_reply_template = [📚 <b>Теория (Теоретическая часть)</b> — раздел курса по дисциплине «Искусственный интеллект».
+
+<b>Определение:</b>
+Теоретическая часть — это раздел курса, в котором закладывается фундаментальное понимание того, как устроены и работают нейросети. В ней последовательно разбираются все ключевые этапы: от сравнения биологического и искусственного нейронов и функций активации до процесса обучения (функция потерь, градиентный спуск, обратное распространение ошибки). Также здесь рассматриваются важные практические аспекты: инициализация весов, регуляризация, дропаут, нормализация данных и контроль качества обучения, что позволяет не просто создать нейросеть, но и правильно её обучить и проверить.
+
+<b>Ключевые понятия:</b>
+• Сравнение биологического и искусственного нейрона
+• Функции активации
+• Функция потерь (Loss)
+• Градиентный спуск
+• Обратное распространение ошибки (BackPropagation)
+• Эпоха, итерации, батчи
+• Архитектура нейросети
+• Задачи регрессии и классификации
+• Инициализация весов и нормализация данных
+• Регуляризация + оптимизаторы
+• Дропаут и нормализация по мини-батчам
+• Контроль качества обучения
+
+<b>Примеры применения:</b>
+• В медицине: Теоретические знания о нейросетях (классификация, функция потерь, BackPropagation) применяются для обучения моделей, которые по снимкам МРТ или КТ распознают опухоли, переломы или признаки инсульта.
+• В финансах и банках: Теория регрессии, регуляризации и контроля качества используется для создания нейросетей, предсказывающих курс акций, кредитный рейтинг клиентов или вероятность дефолта по займу.
+• В робототехнике и автопилотах: Архитектура нейросетей, методы нормализации батчей и оптимизаторы (градиентный спуск) применяются для обработки данных с камер и лидаров, чтобы робот или беспилотник мог распознавать объекты и принимать решения в реальном времени.
+
+🤔 Хочешь узнать подробнее по какому-то понятию из этой темы?];;
+
+@if_topic_theory_found_production = {
+    rrel_condition_template: {
+        rrel_template: [*
+            .._topic <-_ concept_discipline_topic;;
+        *]
+    } (* <- nrel_search_template;; *);
+    rrel_reply_template: {
+        rrel_message_template: @topic_theory_found_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_topic_about_theory
+            };
+            {
+                rrel_reply_message_class: concept_unknown_message;
+                rrel_context_message_class: concept_student_message_about_searching_topic_about_theory
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+    }
+};;
+@if_topic_theory_found_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_topic_about_theory
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о запросе информации по теме Теория]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_example:
+    [Про что говорится в теме Теория?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_topic_theory_found_production
+>;
+=> nrel_message_keywords: [
+    про что говорится в теме теория;
+    расскажи про тему теория;
+    что изучается в теме теория;
+    о чём тема теория;
+    о чем тема теория;
+    что в теме теория;
+    расскажи о теме теория;
+    инфо по теме теория;
+    информация о теме теория;
+    что по теме теория;
+    теоретическая часть;
+    теория нейросетей;
+];;

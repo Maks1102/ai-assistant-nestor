@@ -1,0 +1,119 @@
+//////////////////////////////////////
+// Course content (static outline)
+//////////////////////////////////////
+
+// --- First production: course content found (static)
+
+@course_content_reply_template = [📚 Вот <b>содержание курса</b> по дисциплине «Искусственный интеллект»:
+
+1) <b>Математический аппарат для создания нейросетей</b>
+    1) Понятие функции
+    2) Производная функции одного аргумента
+    3) Частные производные функции с несколькими аргументами
+    4) Базовые понятия статистики
+    5) Интегралы (база)
+
+2) <b>Теоретическая часть</b>
+    1) Сравнение биологического и искусственного нейрона
+    2) Примеры функций активации
+    3) Функция потерь (Loss)
+    4) Градиентный спуск
+    5) Обратное распространение ошибки (BackPropagation)
+    6) Эпоха, итерации, батчи
+    7) Архитектура нейросети
+    8) Задача регрессии
+    9) Задача классификации
+    10) Другие задачи нейросети
+    11) Инициализация весов и нормализация данных
+    12) Регуляризация + оптимизаторы
+    13) Дропаут и нормализация по мини-батчам
+    14) Контроль качества обучения
+
+3) <b>Создание простейших нейросетей</b>
+    1) Установление линейной зависимости на данных без шума
+    2) Установление линейной зависимости на данных с шумом
+
+4) <b>Более сложные нейросети</b>
+
+🤔 Хочешь узнать подробнее по какой-то теме? Просто напиши её название!];;
+
+@if_course_content_found_production = {
+    rrel_reply_template: {
+		rrel_message_template: @course_content_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_discipline_topics;
+                rrel_context_message_class: concept_student_message_about_searching_course_content
+            };
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_course_content
+            };
+            {
+                rrel_reply_message_class: concept_unknown_message;
+                rrel_context_message_class: concept_student_message_about_searching_course_content
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+	}
+};;
+@if_course_content_found_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_course_content
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о запросе содержания курса]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_corresponding_skill:
+    ...
+    (*
+        => nrel_main_idtf:
+            [показать содержание курса]
+            (*
+                <- lang_ru;;
+            *);;
+        <- concept_skill;;
+        <- .process_disciplines;;
+    *);
+=> nrel_example:
+    [Пришли содержание курса]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Что входит в курс?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_course_content_found_production
+>;
+=> nrel_message_keywords: [
+    содержание курса;
+    содержимое курса;
+    план курса;
+    структура курса;
+    что входит в курс;
+    программа курса;
+    перечень тем курса;
+    покажи курс;
+    покажи содержание;
+    показать содержание курса;
+    пришли содержание курса;
+    скинь содержание курса;
+    скинь программу курса;
+    пришли программу курса;
+];
+=> nrel_message_patterns: [
+];;

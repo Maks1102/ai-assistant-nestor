@@ -1,0 +1,26 @@
+concept_quality_control
+=> nrel_main_idtf:
+    [контроль качества]
+    (*
+        <- lang_ru;;
+    *);
+=> nrel_idtf:
+    [Контроль качества обучения]
+    (*
+        <- lang_ru;;
+    *);
+<- concept;
+=> nrel_definition:
+    [Контроль качества обучения — это совокупность методов и метрик, позволяющих оценить, насколько успешно модель обучается и как хорошо она обобщает данные, которых не видела при обучении.]
+    (*
+        <- concept_definition;;
+    *);
+=> nrel_explanation:
+    [Ключевые метрики:
+• Для классификации: Accuracy, Precision, Recall, F1-score, AUC-ROC.
+• Для регрессии: MSE, MAE, R².
+• Разделение данных: train/validation/test split для объективной оценки.
+• Кривые обучения: графики ошибки на train и validation для диагностики переоб/недообучения.]
+    (*
+        <- concept_explanation;;
+    *);;

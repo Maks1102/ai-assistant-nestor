@@ -1,0 +1,104 @@
+//////////////////////////////////////
+// Topic: Теория
+//////////////////////////////////////
+
+@topic_theory_reply_template = [📚 <b>Теория</b> (Теоретическая часть) — это раздел курса, в котором закладывается фундаментальное понимание того, как устроены и работают нейросети.
+
+<b>Определение:</b>
+В ней последовательно разбираются все ключевые этапы: от сравнения биологического и искусственного нейронов и функций активации до процесса обучения (функция потерь, градиентный спуск, обратное распространение ошибки). Также рассматриваются важные практические аспекты: инициализация весов, регуляризация, дропаут, нормализация данных и контроль качества обучения.
+
+<b>Ключевые понятия:</b>
+• Сравнение биологического и искусственного нейрона
+• Функции активации
+• Функция потерь (Loss)
+• Градиентный спуск
+• Обратное распространение ошибки (BackPropagation)
+• Эпоха, итерации, батчи
+• Архитектура нейросети
+• Задачи регрессии и классификации
+• Инициализация весов и нормализация данных
+• Регуляризация + оптимизаторы
+• Дропаут и нормализация по мини-батчам
+• Контроль качества обучения
+
+<b>Примеры применения:</b>
+• <i>В медицине</i>: обучение моделей для распознавания опухолей по снимкам МРТ/КТ
+• <i>В финансах</i>: предсказание курсов акций и кредитных рейтингов
+• <i>В робототехнике</i>: обработка данных с камер для распознавания объектов в реальном времени
+
+🤔 Хочешь узнать подробнее по какой-то теме?];;
+
+@if_topic_theory_found_production = {
+    rrel_reply_template: {
+		rrel_message_template: @topic_theory_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_topic_theory
+            };
+            {
+                rrel_reply_message_class: concept_unknown_message;
+                rrel_context_message_class: concept_student_message_about_searching_topic_theory
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+	}
+};;
+@if_topic_theory_found_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_topic_theory
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о содержании темы теория]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_corresponding_skill:
+    ...
+    (*
+        => nrel_main_idtf:
+            [узнать содержание темы теория]
+            (*
+                <- lang_ru;;
+            *);;
+        <- concept_skill;;
+        <- .process_disciplines;;
+    *);
+=> nrel_example:
+    [Про что говорится в теме Теория?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Что изучают в теме Теория?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_topic_theory_found_production
+>;
+=> nrel_message_keywords: [
+    про что говорится в теме теория;
+    что изучают в теме теория;
+    содержание темы теория;
+    расскажи про тему теория;
+    про тему теория;
+    что в теме теория;
+    про теорию;
+    про теоретическую часть;
+    содержание теоретической части;
+    что изучают в теоретической части;
+    о чём тема теория;
+    про теоретическую часть курса;
+];
+=> nrel_message_patterns: [
+];;

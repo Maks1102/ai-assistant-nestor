@@ -1,0 +1,83 @@
+//////////////////////////////////////
+// Topic about: Математический аппарат
+//////////////////////////////////////
+
+@topic_math_found_reply_template = [📚 <b>Математический аппарат для создания нейросетей</b> — раздел курса по дисциплине «Искусственный интеллект».
+
+<b>Определение:</b>
+Математический аппарат — это совокупность математических методов, формул, уравнений, теорем и логических правил, которые используются для описания, моделирования и решения конкретных задач. По сути, это рабочий инструментарий для формализации процессов.
+
+<b>Ключевые понятия:</b>
+• Понятие функции
+• Производная функции одного аргумента
+• Частные производные функции с несколькими аргументами
+• Базовые понятия статистики
+• Интегралы (база)
+
+<b>Примеры применения:</b>
+• В физике: Математический аппарат (включая дифференциальные уравнения и интегралы) используется для вычисления траекторий полета, законов термодинамики или аэродинамики.
+• В IT и программировании: Математический аппарат (теория вероятностей, линейная алгебра) управляет процессами машинного обучения.
+• В экономике: Для анализа рисков, прогнозирования курсов валют или оптимизации логистических цепочек применяются статистические и экономико-математические инструменты.
+
+🤔 Хочешь узнать подробнее по какому-то понятию из этой темы?];;
+
+@if_topic_math_found_production = {
+    rrel_condition_template: {
+        rrel_template: [*
+            .._topic <-_ concept_discipline_topic;;
+        *]
+    } (* <- nrel_search_template;; *);
+    rrel_reply_template: {
+        rrel_message_template: @topic_math_found_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_topic_about_math
+            };
+            {
+                rrel_reply_message_class: concept_unknown_message;
+                rrel_context_message_class: concept_student_message_about_searching_topic_about_math
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+    }
+};;
+@if_topic_math_found_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_topic_about_math
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о запросе информации по теме Математический аппарат]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_example:
+    [Про что говорится в теме Математический аппарат?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_topic_math_found_production
+>;
+=> nrel_message_keywords: [
+    про что говорится в теме математический;
+    расскажи про тему математический;
+    что изучается в теме математический;
+    о чём тема математический;
+    о чем тема математический;
+    что в теме математический;
+    расскажи о теме математический;
+    инфо по теме математический;
+    информация о теме математический;
+    что по теме математический;
+    математический аппарат;
+];;

@@ -1,0 +1,97 @@
+//////////////////////////////////////
+// Topic: Практическая часть (нейросети)
+//////////////////////////////////////
+
+@topic_neural_network_reply_template = [📚 <b>Практическая часть (Нейросети)</b> — это раздел курса, в котором все знания из теоретической части применяются на практике и закрепляются.
+
+<b>Определение:</b>
+В этом разделе предоставлены примеры реализации нейронных сетей на C++, а также разнообразные сюжеты для задач. Сначала идут простые задачи, чтобы прочувствовать специфику направления, но постепенно сложность растёт. От нейрона к однослойной нейронной сети, от однослойной к многослойной. Рассматриваются задачи регрессии, классификации, аппроксимация функций, нахождение объектов на изображении, сжатие данных.
+
+<b>Ключевые понятия:</b>
+• Создание простейших нейросетей
+• Сложные (глубокие) нейросети
+• Линейная зависимость без шума
+• Линейная зависимость с шумом (МНК)
+
+<b>Примеры применения:</b>
+• <i>В обработке изображений</i>: распознавание объектов, лиц и сегментация изображений
+• <i>В анализе текста</i>: классификация тональности, машинный перевод и генерация текста
+• <i>В прогнозировании</i>: предсказание временных рядов, цен акций и других количественных данных
+
+🤔 Хочешь узнать подробнее по какой-то теме?];;
+
+@if_topic_neural_network_found_production = {
+    rrel_reply_template: {
+		rrel_message_template: @topic_neural_network_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_topic_neural_network
+            };
+            {
+                rrel_reply_message_class: concept_unknown_message;
+                rrel_context_message_class: concept_student_message_about_searching_topic_neural_network
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+	}
+};;
+@if_topic_neural_network_found_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_topic_neural_network
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о содержании темы практическая часть (нейросети)]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_corresponding_skill:
+    ...
+    (*
+        => nrel_main_idtf:
+            [узнать содержание темы практическая часть (нейросети)]
+            (*
+                <- lang_ru;;
+            *);;
+        <- concept_skill;;
+        <- .process_disciplines;;
+    *);
+=> nrel_example:
+    [Про что говорится в теме Практическая часть?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Что изучают в теме Нейросети?]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_topic_neural_network_found_production
+>;
+=> nrel_message_keywords: [
+    про что говорится в теме нейросети;
+    что изучают в теме нейросети;
+    содержание темы нейросети;
+    расскажи про тему нейросети;
+    про тему нейросети;
+    что в теме нейросети;
+    про нейросети;
+    про практическую часть;
+    содержание практической части;
+    что изучают в практической части;
+    о чём тема нейросети;
+    про практическую часть курса;
+    создание нейросетей;
+];
+=> nrel_message_patterns: [
+];;
