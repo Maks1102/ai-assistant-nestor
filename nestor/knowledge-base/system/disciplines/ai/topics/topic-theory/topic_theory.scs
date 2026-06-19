@@ -12,7 +12,7 @@ topic_theory
 <- concept_discipline_topic;
 => nrel_key_concepts: {
     concept_neurons;
-    concept_activation_func;
+    concept_function;
     concept_gradient_descent;
     concept_loss;
     concept_back_propagation;

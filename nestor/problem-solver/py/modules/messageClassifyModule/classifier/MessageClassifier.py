@@ -173,6 +173,24 @@ class MessageClassifier:
         "содержание темы теория", "про теоретическую часть", "содержание теоретической части",
     ]
 
+    _LESSON_NOTES_KEYWORDS: list[str] = [
+        "конспект по теме", "конспекты по теме",
+        "пришли конспект", "скинь конспект",
+        "конспект урока", "конспекты уроков",
+        "конспект лекции", "конспекты лекций",
+        "пришли конспекты", "скинь конспекты",
+        "нужен конспект", "нужны конспекты",
+    ]
+
+    _HOMEWORK_TASKS_KEYWORDS: list[str] = [
+        "задачи по теме", "задание по теме", "задания по теме",
+        "пришли задачи", "скинь задачи",
+        "пришли задание", "скинь задание",
+        "пришли задания", "скинь задания",
+        "практические задания", "домашнее задание",
+        "нужны задачи", "нужны задания",
+    ]
+
     _COURSE_CONTENT_KEYWORDS: list[str] = [
         "содержание курса", "содержимое курса", "план курса",
         "структура курса", "что входит в курс", "программа курса",
@@ -239,6 +257,20 @@ class MessageClassifier:
     _CONCEPT_EXAMPLES_PATTERNS: list[re.Pattern] = [
         re.compile(r"какие примеры\s+(.+)", re.IGNORECASE),
         re.compile(r"нужны примеры\s+(.+)", re.IGNORECASE),
+    ]
+
+    _LESSON_NOTES_PATTERNS: list[re.Pattern] = [
+        re.compile(r"(?:пришли|скинь|нужны|найди|дай|покажи)\s+конспект(?:ы)?\s+по\s+теме\s+(.+)", re.IGNORECASE),
+        re.compile(r"(?:пришли|скинь|нужны|найди|дай|покажи)\s+конспект(?:ы)?\s+(.+)", re.IGNORECASE),
+        re.compile(r"конспект(?:ы)?\s+по\s+теме\s+(.+)", re.IGNORECASE),
+        re.compile(r"конспект(?:ы)?\s+урок(?:а|ов)?\s+(.+)", re.IGNORECASE),
+    ]
+
+    _HOMEWORK_TASKS_PATTERNS: list[re.Pattern] = [
+        re.compile(r"(?:пришли|скинь|нужны|найди|дай|покажи)\s+задач(?:и|у|а|ей)\s+по\s+теме\s+(.+)", re.IGNORECASE),
+        re.compile(r"(?:пришли|скинь|нужны|найди|дай|покажи)\s+задач(?:и|у|а|ей)\s+(.+)", re.IGNORECASE),
+        re.compile(r"задач(?:и|а|ей)\s+по\s+теме\s+(.+)", re.IGNORECASE),
+        re.compile(r"задан(?:ие|ия)\s+по\s+теме\s+(.+)", re.IGNORECASE),
     ]
 
     def classify(self, message: str, message_author_class: str, message_history: list[str]) -> tuple[str, dict[str, str], set[str]]:
@@ -354,6 +386,16 @@ class MessageClassifier:
             if entity:
                 entities["concept"] = entity
 
+        elif predicted_class == "concept_student_message_about_searching_lesson_notes":
+            entity = self._extract_entity(message, self._LESSON_NOTES_PATTERNS)
+            if entity:
+                entities["concept_discipline_topic"] = entity
+
+        elif predicted_class == "concept_student_message_about_searching_homework_tasks":
+            entity = self._extract_entity(message, self._HOMEWORK_TASKS_PATTERNS)
+            if entity:
+                entities["concept_discipline_topic"] = entity
+
         return entities
 
     def _extract_context_entities(self, message_history: list[str], predicted_class: str) -> set[str]:
@@ -435,6 +477,18 @@ class MessageClassifier:
 
         if self._matches_any(message, self._TOPIC_THEORY_KEYWORDS):
             return ("concept_student_message_about_searching_topic_theory", {}, set())
+
+        if self._matches_any(message, self._LESSON_NOTES_KEYWORDS):
+            entity = self._extract_entity(message, self._LESSON_NOTES_PATTERNS)
+            entities = {"concept_discipline_topic": entity} if entity else {}
+            return ("concept_student_message_about_searching_lesson_notes",
+                    entities, set())
+
+        if self._matches_any(message, self._HOMEWORK_TASKS_KEYWORDS):
+            entity = self._extract_entity(message, self._HOMEWORK_TASKS_PATTERNS)
+            entities = {"concept_discipline_topic": entity} if entity else {}
+            return ("concept_student_message_about_searching_homework_tasks",
+                    entities, set())
 
         if self._matches_any(message, self._COURSE_CONTENT_KEYWORDS):
             return ("concept_student_message_about_searching_course_content", {}, set())

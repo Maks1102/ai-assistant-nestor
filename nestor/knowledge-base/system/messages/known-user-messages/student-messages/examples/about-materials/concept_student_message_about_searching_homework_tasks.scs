@@ -1,0 +1,92 @@
+//////////////////////////////////////
+// Homework tasks (задачи по теме)
+//////////////////////////////////////
+
+// --- First production: link to Google Drive
+
+@homework_tasks_reply_template = [📝 <b>Задачи и задания</b> по курсу доступны по ссылке на Google Диск:
+
+🔗 <a href="https://drive.google.com/drive/folders/14RQT11v0xvnmZfsr4VF9QSMUXHzoHVwC?usp=sharing">Перейти к задачам</a>
+
+Там ты найдёшь все практические задания. Если нужна помощь с решением — обращайся! 💪];;
+
+@if_homework_tasks_production = {
+    rrel_reply_template: {
+		rrel_message_template: @homework_tasks_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_homework_tasks
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+	}
+};;
+@if_homework_tasks_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_homework_tasks
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о запросе задач и заданий]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_corresponding_skill:
+    ...
+    (*
+        => nrel_main_idtf:
+            [показать задачи по курсу]
+            (*
+                <- lang_ru;;
+            *);;
+        <- concept_skill;;
+        <- .process_materials;;
+    *);
+=> nrel_example:
+    [Пришли задачи по теме нейронные сети]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Скинь задания по теме математический аппарат]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Нужны задачи по теории]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_homework_tasks_production
+>;
+=> nrel_message_keywords: [
+    задачи по теме;
+    задание по теме;
+    задания по теме;
+    пришли задачи;
+    скинь задачи;
+    пришли задание;
+    скинь задание;
+    скинь задания;
+    пришли задания;
+    задачи;
+    практические задания;
+    домашнее задание;
+];
+=> nrel_message_patterns: [
+];
+=> nrel_entity_class_descriptions: {
+    {
+        rrel_entity_class: concept_discipline_topic
+    }
+};;

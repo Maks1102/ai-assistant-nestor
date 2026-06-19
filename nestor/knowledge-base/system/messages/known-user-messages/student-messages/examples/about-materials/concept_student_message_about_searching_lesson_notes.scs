@@ -1,0 +1,90 @@
+//////////////////////////////////////
+// Lesson notes (конспекты уроков)
+//////////////////////////////////////
+
+// --- First production: link to Google Drive
+
+@lesson_notes_reply_template = [📚 <b>Конспекты уроков</b> доступны по ссылке на Google Диск:
+
+🔗 <a href="https://drive.google.com/drive/folders/1cnERXIQ3npBcarZOZFJHuow5fx1P7IMm?usp=sharing">Перейти к конспектам</a>
+
+Там ты найдёшь все материалы по курсу. Если нужна информация по конкретной теме — просто напиши мне! 😊];;
+
+@if_lesson_notes_production = {
+    rrel_reply_template: {
+		rrel_message_template: @lesson_notes_reply_template;
+        rrel_message_class: concept_system_reply_message_with_question;
+        rrel_expected_user_reply_message_classes: {
+            {
+                rrel_reply_message_class: concept_student_message_about_searching_concept_information;
+                rrel_context_message_class: concept_student_message_about_searching_lesson_notes
+            };
+            {
+                rrel_reply_message_class: concept_student_negative_reply_message;
+                rrel_context_message_class: concept_student_message_about_help
+            }
+        }
+	}
+};;
+@if_lesson_notes_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_searching_lesson_notes
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся о запросе конспектов уроков]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_corresponding_skill:
+    ...
+    (*
+        => nrel_main_idtf:
+            [показать конспекты уроков]
+            (*
+                <- lang_ru;;
+            *);;
+        <- concept_skill;;
+        <- .process_materials;;
+    *);
+=> nrel_example:
+    [Пришли конспект по теме нейронные сети]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Скинь конспекты по теме математический аппарат]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_example:
+    [Нужны конспекты по теории]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_lesson_notes_production
+>;
+=> nrel_message_keywords: [
+    конспект по теме;
+    конспекты по теме;
+    пришли конспект;
+    скинь конспект;
+    конспект урока;
+    конспекты уроков;
+    конспект лекции;
+    конспекты лекций;
+    пришли конспекты;
+    скинь конспекты;
+];
+=> nrel_message_patterns: [
+];
+=> nrel_entity_class_descriptions: {
+    {
+        rrel_entity_class: concept_discipline_topic
+    }
+};;
