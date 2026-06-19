@@ -47,7 +47,8 @@ concept_neurons
         <td>Чрезвычайно энергоэффективен (весь мозг потребляет около 20 Вт).</td>
         <td>Высокое энергопотребление серверов или специализированных ИИ-чипов.</td>
     </tr>
-</table>]
+</table><br/><br/>📄 <a href='https://docs.google.com/document/d/12hWL_O95vgzic5Ffp5BoNG_qKhRYiK0R/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1-7JuCjubrCKo_87DDAynmY0ZkrlYz6t6/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+

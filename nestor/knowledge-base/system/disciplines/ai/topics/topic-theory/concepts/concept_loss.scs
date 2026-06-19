@@ -18,7 +18,8 @@ concept_loss
 => nrel_explanation:
     [Понимание и выбор этого инструмента — важнейший этап создания любой ML-модели. Основные виды функций разделяются по типу решаемой задачи:
 1. Задачи регрессии (прогнозирование чисел): MSE, MAE, Huber Loss
-2. Задачи классификации (разделение по категориям): Cross-Entropy, Hinge Loss]
+2. Задачи классификации (разделение по категориям): Cross-Entropy, Hinge Loss<br/><br/>📄 <a href='https://docs.google.com/document/d/1ZbX1rw5LqQWhson2r8WlgSNqXBZogiQa/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1IXxRh7WjC1thDQ645hJi2AwiNBdkekNe/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+

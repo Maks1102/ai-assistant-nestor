@@ -21,7 +21,8 @@ concept_statistics_base
 2. Эмпирические и теоретические характеристики
 3. Оценки параметров
 4. Проверка статистических гипотез
-5. Анализ зависимостей]
+5. Анализ зависимостей<br/><br/>📄 <a href='https://docs.google.com/document/d/1RNTGp555x-0rCSYPZki8aPQqghLoa7Q6/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1CW5D_0bdJaFV6W4Pil8vORXMPjX8duDa/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+

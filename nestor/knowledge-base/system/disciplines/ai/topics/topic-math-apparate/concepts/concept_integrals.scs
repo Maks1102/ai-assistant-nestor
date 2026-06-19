@@ -16,7 +16,8 @@ concept_integrals
         <- concept_definition;;
     *);
 => nrel_explanation:
-    [Слово происходит от латинского <i>integer</i> (целый). Он словно «собирает» объект по частям.]
+    [Слово происходит от латинского <i>integer</i> (целый). Он словно «собирает» объект по частям.<br/><br/>📄 <a href='https://docs.google.com/document/d/1v9F9L4joqQy-l79fpOsUlpgBy1GcZrwk/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1ZlZkUoWcYs8X_v6bvxgsxZD5neSJHL7T/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+

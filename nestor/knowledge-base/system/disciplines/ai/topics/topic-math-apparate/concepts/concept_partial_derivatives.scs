@@ -17,7 +17,8 @@ concept_partial_derivatives
     *);
 => nrel_explanation:
     [Чтобы найти частную производную, например, по <i>x</i>, применяются все те же базовые правила дифференцирования, что и для функций одной переменной (таблица производных, правила суммы, произведения и частного), но с одним важным условием:
-все остальные переменные (в данном случае <i>y</i>) при дифференцировании ведут себя как обычные числа (константы).]
+все остальные переменные (в данном случае <i>y</i>) при дифференцировании ведут себя как обычные числа (константы).<br/><br/>📄 <a href='https://docs.google.com/document/d/1QTB8C7xcG2UAgSyAySjWmmBg9tVC_4Lr/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/11WgH_1aSndwNCJlyslbP5BdRH02Ymn74/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+

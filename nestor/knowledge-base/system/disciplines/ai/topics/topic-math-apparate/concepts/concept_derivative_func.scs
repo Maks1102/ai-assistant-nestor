@@ -16,7 +16,8 @@ concept_derivative_func
         <- concept_definition;;
     *);
 => nrel_explanation:
-    [График производной функции в конкретной точке равен угловому коэффициенту касательной, проведенной к графику функции в этой точке.]
+    [График производной функции в конкретной точке равен угловому коэффициенту касательной, проведенной к графику функции в этой точке.<br/><br/>📄 <a href='https://docs.google.com/document/d/1OnSGiFlCdmerhwQEJf-ol_C3nZfVX_fw/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/17lkSB_0hcBWk4gQnQfcZ0VEdbsNprbrJ/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+
