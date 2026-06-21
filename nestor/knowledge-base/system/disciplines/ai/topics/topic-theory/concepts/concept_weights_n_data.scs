@@ -15,8 +15,9 @@ concept_weights_n_data
     (*
         <- concept_definition;;
     *);
-=> nrel_explanation:
-    [Типичные методы инициализации: Xavier/Glorot (для sigmoid/tanh), He (для ReLU), случайная инициализация. Методы нормализации: Min-Max нормализация, Z-score стандартизация, batch нормализация.]
+=> nrel_explanation:    [Типичные методы инициализации: Xavier/Glorot (для sigmoid/tanh), He (для ReLU), случайная инициализация. Методы нормализации: Min-Max нормализация, Z-score стандартизация, batch нормализация.<br/><br/>📄 <a href='https://docs.google.com/document/d/17O5rFdx1FdjqlZXWIwHlsuYztCpcWTfU/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1uP5asMTGcOQhGB6G1zZ6wZ8MljOoJ2hS/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;
+
+

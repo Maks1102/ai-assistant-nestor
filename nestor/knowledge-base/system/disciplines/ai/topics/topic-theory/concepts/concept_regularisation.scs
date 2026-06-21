@@ -20,7 +20,7 @@ concept_regularisation
 • L1 (Lasso): добавляет сумму абсолютных значений весов. Способствует разреживанию весов.
 • L2 (Ridge): добавляет сумму квадратов весов. Способствует малым, но ненулевым весам.
 • Elastic Net: комбинация L1 и L2.
-• Early Stopping: прекращение обучения при начале роста ошибки на валидации.]
+• Early Stopping: прекращение обучения при начале роста ошибки на валидации.<br/><br/>📄 <a href='https://docs.google.com/document/d/1bHW9ZIKGbh6dj6Nrr5qrcTsFlqRM4lbU/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1QVIo2qoWFbUBpAMVa8DmJjJ41bPZS3CW/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;

@@ -1,7 +1,7 @@
 answer_structure = [*
 myself
 => nrel_main_idtf:
-    [Ника]
+    [Нестор]
     (*
         <- lang_ru;;
     *);
@@ -22,7 +22,7 @@ myself
 myself
 <- concept_mood_positive;
 => nrel_full_name:
-    [<b>N</b>ika is an <b>I</b>ntelligent <b>K</b>nowledge-driven <b>A</b>ssistant.]
+    [<b>N</b>estor is an <b>E</b>ducational <b>S</b>ystem for <b>T</b>utoring, <b>O</b>rganization and <b>R</b>esearch.]
     (*
         <- concept_full_name;;
         => nrel_format: format_html;;
