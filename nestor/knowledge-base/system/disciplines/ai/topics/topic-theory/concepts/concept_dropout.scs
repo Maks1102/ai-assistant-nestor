@@ -16,7 +16,7 @@ concept_dropout
         <- concept_definition;;
     *);
 => nrel_explanation:
-    [При каждом шаге обучения Dropout случайно обнуляет выходы некоторых нейронов с вероятностью p (typically 0.2–0.5). На этапе инференса (предсказания) все нейроны работают, но их выходы масштабируются на (1-p). Этот метод имитирует ансамбль из множества подсетей.]
+    [При каждом шаге обучения Dropout случайно обнуляет выходы некоторых нейронов с вероятностью p (typically 0.2–0.5). На этапе инференса (предсказания) все нейроны работают, но их выходы масштабируются на (1-p). Этот метод имитирует ансамбль из множества подсетей.<br/><br/>📄 <a href='https://docs.google.com/document/d/1IVX2PdiN5a4ezgf37nfWHHgfZXJn7CDr/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1HDTPzsf2JMB1f1OvaaI9mCiozzHvMlrU/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;

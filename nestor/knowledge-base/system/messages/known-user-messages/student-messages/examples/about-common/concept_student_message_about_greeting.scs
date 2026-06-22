@@ -5,7 +5,7 @@
 // --- First production: student already greeted and I have positive mood
 
 @student_already_greeted_and_i_have_positive_mood_reply_template =
-[Привет снова, ${concept_student}! 😊
+[Привет снова, ученик! 😊
 
 Как твои дела? Я в отличном настроении и готова помочь 🚀
 
@@ -32,7 +32,7 @@
 // --- Second production: student already greeted and I have neutral mood
 
 @student_already_greeted_and_i_have_neutral_mood_reply_template =
-[Привет ещё раз, ${concept_student}! 👋
+[Привет ещё раз, ученик! 👋
 
 Что обсудим сейчас?
 
@@ -59,7 +59,7 @@
 // --- Third production: student already greeted and I have tired mood
 
 @student_already_greeted_and_i_have_tired_mood_reply_template =
-[О, ${concept_student}, снова ты! 🥱
+[О, ученик, снова ты! 🥱
 
 Немного загружена, но всё ещё здесь, чтобы поддержать.
 
@@ -86,7 +86,7 @@
 // --- Fourth production: student already greeted and I have humorous mood
 
 @student_already_greeted_and_i_have_humorous_mood_reply_template =
-[Я тебя вижу, ${concept_student}! 🤖
+[Я тебя вижу, ученик! 🤖
 
 Я только что обновилась и уже хочу свернуть горы. 🏔️
 
@@ -113,7 +113,7 @@
 // --- Fifth production: student already greeted
 
 @student_already_greeted_reply_template =
-[Ну привет, ${concept_student}! 😊
+[Ну привет, ученик! 😊
 
 Как твои дела? 🌟
 
@@ -154,7 +154,7 @@
 // --- Seventh production: greet student
 
 @student_not_greeted_yet_reply_template =
-[Привет, ${concept_student}! 👋😊 Очень рада знакомству!
+[Привет, ученик! 👋😊 Очень рада знакомству!
 
 Меня зовут ${concept_intelligent_system}. ${concept_note}
 

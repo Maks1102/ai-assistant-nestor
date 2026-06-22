@@ -4,7 +4,7 @@
 
 // --- First production: positive greeting
 
-@positive_greeting_reply_template = [${concept_student}, у меня всё хорошо! 😊];;
+@positive_greeting_reply_template = [ученик, у меня всё хорошо! 😊];;
 
 @if_system_has_positive_mood_production = {
     rrel_condition_template: {
@@ -26,7 +26,7 @@
 
 // --- Second production: neutral greeting
 
-@neutral_greeting_reply_template = [${concept_student}, я рада видеть тебя.];;
+@neutral_greeting_reply_template = [ученик, я рада видеть тебя.];;
 
 @if_system_has_neutral_mood_production = {
     rrel_condition_template: {

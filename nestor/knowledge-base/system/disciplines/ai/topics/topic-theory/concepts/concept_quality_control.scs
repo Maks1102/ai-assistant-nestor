@@ -20,7 +20,7 @@ concept_quality_control
 • Для классификации: Accuracy, Precision, Recall, F1-score, AUC-ROC.
 • Для регрессии: MSE, MAE, R².
 • Разделение данных: train/validation/test split для объективной оценки.
-• Кривые обучения: графики ошибки на train и validation для диагностики переоб/недообучения.]
+• Кривые обучения: графики ошибки на train и validation для диагностики переоб/недообучения.<br/><br/>📄 <a href='https://docs.google.com/document/d/1WYkGEv67tcvUV4PVmNQaF2oJILtIh4my/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Конспект</a><br/>📝 <a href='https://docs.google.com/document/d/1H_EBtG7dXFs9VYKFPB6qyc1iN4AKlFeH/edit?usp=sharing&ouid=114201395375486892241&rtpof=true&sd=true'>Задачи</a>]
     (*
         <- concept_explanation;;
     *);;

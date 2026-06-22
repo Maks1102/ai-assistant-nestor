@@ -309,7 +309,29 @@ class MessageClassifier:
     def _classify_with_ml(self, message: str, message_history: list[str]) -> tuple[str, dict[str, str], set[str]]:
         """
         Классифицирует сообщение с помощью ML-модели.
+
+        Перед ML-моделью выполняется regex-проверка на концепт-информацию.
+        Если сообщение содержит паттерн запроса определения ("что такое X",
+        "что значит Y" и т.д.) и удаётся извлечь сущность — класс фиксируется
+        как concept_information, минуя ML-модель.
         """
+        # --- Regex override: запросы определения понятия ---
+        # Если сообщение чётко соответствует паттерну "что такое X" / "что это Y"
+        # и т.п., то отправляем прямо в concept_information, минуя ML-модель.
+        # Это гарантирует, что "Что такое математический аппарат?" и любые
+        # другие запросы определения не будут ошибочно классифицированы
+        # как запрос содержания темы (topic_about_math и др.).
+        entity_value = self._extract_entity(message, self._CONCEPT_INFORMATION_PATTERNS)
+        if entity_value:
+            entities: dict[str, str] = {"concept": entity_value}
+            context_entities = self._extract_context_entities(message_history, "concept_student_message_about_searching_concept_information")
+            logger.debug(
+                'Regex override: "%s" -> concept_information (entity="%s")',
+                message[:50], entity_value,
+            )
+            return ("concept_student_message_about_searching_concept_information",
+                    entities, context_entities)
+
         # Предобработка текста
         processed = preprocess(message)
 
