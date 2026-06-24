@@ -1,0 +1,43 @@
+//////////////////////////////////////
+// Easter egg: Orange poem
+//////////////////////////////////////
+
+// --- First production: orange poem reply
+
+@orange_poem_reply_template = [🍊 Как-то раз я невзначай
+сунул апельсин в английский чай.
+Тут все сразу стало плевым:
+апельсин английским, чай апельсиновым. 🍵];;
+
+@if_orange_poem_production = {
+    rrel_reply_template: {
+		rrel_message_template: @orange_poem_reply_template
+	}
+};;
+@if_orange_poem_production <- nrel_reply_production;;
+
+// --- Message topic class
+
+concept_student_message_about_orange
+<- sc_node_class;
+=> nrel_main_idtf:
+    [класс сообщений учащихся об апельсине]
+    (*
+        <- lang_ru;;
+    *);
+<- concept_message_topic;
+<= nrel_inclusion:
+    concept_student_message;
+=> nrel_example:
+    [Апельсин]
+    (*
+        <- concept_example;;
+    *);
+=> nrel_reply_production_chain: <
+    @if_orange_poem_production
+>;
+=> nrel_message_keywords: [
+    апельсин;
+];
+=> nrel_message_patterns: [
+];;
